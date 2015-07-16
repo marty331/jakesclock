@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xmlns:og="http://opengraphprotocol.org/schema/"  itemscope itemtype="http://schema.org/Article" lang="en-US">
+<head>
+
+  <base href="">
+  <meta charset="utf-8" />
+  <title>Ballard Family Security</title>
+  <meta name="viewport" content="width=device-width"> 
+  <style>
+  input {
+    display: block;
+  }
+  #table1 {
+    padding-left:10 px;
+  }
+  #body1 {
+    padding-left: 15px;
+  }
+
+    #left {
+      background: #0017E5;
+      }
+      #top {
+        background: #1BB40E;
+      }
+      #right {
+        background: #E50000;
+      }
+      #bottom {
+        background: #E3E500;
+      }
+      #left, #right {
+        position: fixed;
+        top: 0; bottom: 0;
+        width: 15px;
+        }
+        #left { left: 0; }
+        #right { right: 0; }
+        
+      #top, #bottom {
+        position: fixed;
+        left: 0; right: 0;
+        height: 15px;
+        }
+        #top { top: 0; }
+        #bottom { bottom: 0; }
+
+        #page-wrap {
+             width: 80%;
+             margin: 0 auto;
+        }
+        #header2, #links, #subhead2,#login {
+          text-align: center;
+        }
+        
+    @media 
+    
+    /* Fairly small screens including iphones */
+    only screen and (max-width: 500px),
+    
+    /* iPads */
+    only screen and (min-device-width: 768px) and (max-device-width: 1024px) 
+    
+    {
+      #top, #bottom, #left, #right { display: none; }
+    }
+  </style>
+ 
+
+
+  <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">
+
+// Set image refresh rate. 1000 = 1 second 
+var timeout = 250; 
+
+
+function reload(element)
+{
+   setTimeout('reloadImg("' + element.id + '")',timeout)
+};
+
+function reloadImg(id) 
+{ 
+   // Get reference to document DOM object  
+   var obj = document.getElementById(id); 
+
+   // Separate the time portion 
+   var cameraIP = obj.src.split('&t='); 
+
+   // Get the current date  
+   var date = new Date(); 
+
+   // Update the image for the specific camera. Add the current date/time to the end so browser does not used cached image
+   obj.src = cameraIP[0] + "&t=" + Math.floor(date.getTime()/timeout);
+} 
+
+
+</script>
+
+</head>
+<header id="header">
+
+
+    
+    
+
+</header>
+
+
+<body id="body1">
+  <div id="page-wrap">
+
+
+
+  <h2 id="header2">Ballard Family Security</h2>
+
+
+
+
+
+    
+<table id="cams">
+  <tr><p>Camera</p></tr>
+  <tr>
+  <td>
+ Front Door
+<!-- Camera 3 -->
+<img src="http://10.0.0.14/snapshot.cgi?user=guest&pwd=smartcar11&t=" name="refresh" id="cam4" onload='reload(this)' onerror='reload(this)' width="530" height="310" >
+ </td> 
+  <td>
+Back Door
+<!-- Camera 3 -->
+<img src="http://10.0.0.17/snapshot.cgi?user=guest&pwd=smartcar11&t=" name="refresh" id="cam3" onload='reload(this)' onerror='reload(this)' width="530" height="310" >
+ </td></tr>
+          <tr><td>
+  Living Room
+  <!-- Camera 1 -->
+<img src="http://10.0.0.24:50240/cgi-bin/CGIProxy.fcgi?cmd=snapPicture2&usr=guest&pwd=smartcar11&t=" name="refresh" id="cam1" onload='reload(this)' onerror='reload(this)' width="530" height="310" > 
+</td><td>
+Kitchen
+ <!-- Camera 2 -->
+<img src="http://10.0.0.29:50241/cgi-bin/CGIProxy.fcgi?cmd=snapPicture2&usr=guest&pwd=smartcar11&t=" name="refresh" id="cam2" onload='reload(this)' onerror='reload(this)' width="530" height="310" > 
+
+</td></tr>
+
+</table>
+   
+        <table id="table1"  >
+<tr>
+  <form action="/cgi-bin/update_config.py" method="post" >
+    <fieldset>
+                <legend>Select Cameras to Monitor</legend>
+<input type="checkbox" name="livingcam" value="on" /> Living Room
+<input type="checkbox" name="kitchencam" value="on" /> Kitchen
+<input type="checkbox" name="frontcam" value="on" /> Front Door
+<input type="checkbox" name="backcam" value="on" /> Back Door
+<input type="checkbox" name="sidecam" value="on" /> Side Yard
+<input type="submit" value="Select Cameras" />
+</fieldset>
+</form>
+        </tr><tr>
+        <form method="post">
+        <fieldset>
+                <legend>Monitor times</legend>
+        <input type="checkbox" value="24 hours" id="cb24" />24/7<br>
+        <div>Start Time
+                        <input label="Start Time" id="starttime" type="time"
+       ><div>End Time
+                        <input label="End Time" id="endtime" type="time"
+       >
+       <input type="submit" value="Save" />
+     </fieldset></form>
+      </tr>
+                    
+                    <tr id = "links"><td>
+                      </td><td>
+    
+     </td>
+    </tr>
+      
+                 </table>
+                
+<div id="left"></div>
+  <div id="right"></div>
+  <div id="top"></div>
+  <div id="bottom"></div>
+
+</div>
+</body>
+</html>
